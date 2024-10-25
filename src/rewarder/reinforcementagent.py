@@ -18,6 +18,9 @@ class ReinforcementAgent:
     def get_arm_total_calls(self):
         return [(f"arm_{i}", result) for i, result in enumerate(self.N_arms)]
 
+    def get_step_rewards(self):
+        return self.step_rewards
+
     def set_bandit(self, bandit: IBandit):
         self.bandit = bandit
         self._set_N_for_arms()
@@ -59,7 +62,4 @@ class ReinforcementAgent:
     def _validate_eps(self, eps):
         if not (0 <= eps <= 1):
             raise ValueError("Eps must be in range [0,1]")
-
-    def get_step_rewards(self):
-        return self.step_rewards
 
