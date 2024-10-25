@@ -1,7 +1,7 @@
 import numpy as np
 
 from src.bandit_factory.bandit_factory import BanditFactory
-from src.rewarder.reinforcementagent import ReinforcementAgent
+from src.agent.reinforcementagent import ReinforcementAgent
 
 if __name__ == "__main__":
     N_steps = 10000
