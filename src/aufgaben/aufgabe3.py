@@ -25,9 +25,11 @@ if __name__ == "__main__":
     avg_rewards_per_step = rewards_per_step / N_episodes
 
     plt.figure(figsize=(10, 6))
-    plt.plot(avg_rewards_per_step, label='Average Reward (ε=0, Greedy)')
+    plt.plot(avg_rewards_per_step, label=f'Average Reward (ε={eps},'
+                                         f' Greedy)')
     plt.xlabel("Steps")
     plt.ylabel("Average Reward")
-    plt.title("Average Reward per Step (ε=0, Greedy Strategy) over 500 Episodes")
+    plt.title(f"Average Reward per Step (ε={eps}, Greedy Strategy) over "
+              f"{N_episodes} Episodes")
     plt.legend()
     plt.show()
