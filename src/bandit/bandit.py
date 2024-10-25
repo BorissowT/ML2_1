@@ -13,7 +13,11 @@ class IBandit(ABC):
         pass
 
     @abstractmethod
-    def get_arms(self)-> list:
+    def get_middle_of_arms(self)-> list:
+        pass
+
+    @abstractmethod
+    def get_number_of_arms(self):
         pass
 
 class NormalBandit(IBandit):
@@ -23,7 +27,7 @@ class NormalBandit(IBandit):
     number_of_arms = 0
     arms = []
 
-    def get_arms(self) -> list:
+    def get_middle_of_arms(self) -> list:
         return self.arms
 
     def init_number_of_arms(self, number_of_arms: int):
@@ -32,3 +36,6 @@ class NormalBandit(IBandit):
 
     def play_arm(self, arms_number: int) -> float:
         return np.random.normal(self.arms[arms_number], 1)
+
+    def get_number_of_arms(self):
+        return int(self.number_of_arms)
