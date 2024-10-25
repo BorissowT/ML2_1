@@ -10,10 +10,11 @@ if __name__ == "__main__":
     rewards_per_step = np.zeros(N_steps)
 
     eps = 0.5
+    q_0 = 5
 
     for episode in range(N_episodes):
         bandit_function = BanditFactory.get_normal_bandit_function(k_arms)
-        agent = ReinforcementAgent()
+        agent = ReinforcementAgent(q_0)
         agent.set_bandit(bandit_function)
 
         agent.updateQN_with_eps_greedy(eps=eps, N=N_steps)
