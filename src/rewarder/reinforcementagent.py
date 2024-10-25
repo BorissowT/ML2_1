@@ -10,7 +10,7 @@ class ReinforcementAgent:
 
     def __init__(self, q_0=0):
         self.q0 = q_0
-        self.step_rewards = []  # List to store rewards at each step
+        self.step_rewards = []
 
     def get_expectations(self):
         return [(f"arm_{i}", result) for i, result in enumerate(self.Q_arms)]
@@ -22,13 +22,13 @@ class ReinforcementAgent:
         self.bandit = bandit
         self._set_N_for_arms()
         self._set_Q_for_arms()
-        self.step_rewards.clear()  # Clear rewards at the start of a new episode
+        self.step_rewards.clear()
 
     def updateQN(self, arm: int):
         reward = self.bandit.play_arm(arm)
         self._update_N(arm)
         self._update_Q(arm, reward)
-        self.step_rewards.append(reward)  # Store reward
+        self.step_rewards.append(reward)
 
     def updateQN_with_eps_greedy(self, eps: float, N: int):
         self._validate_eps(eps)
@@ -40,7 +40,7 @@ class ReinforcementAgent:
             else:
                 max_value = max(self.Q_arms)
                 max_arm = self.Q_arms.index(max_value)
-                self.updateQN(max_arm)  # Update Q for chosen arm
+                self.updateQN(max_arm)
 
     def _update_N(self, arm: int):
         self.N_arms[arm] += 1
@@ -61,5 +61,5 @@ class ReinforcementAgent:
             raise ValueError("Eps must be in range [0,1]")
 
     def get_step_rewards(self):
-        return self.step_rewards  # Return the list of rewards
+        return self.step_rewards
 
