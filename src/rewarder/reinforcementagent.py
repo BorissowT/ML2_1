@@ -12,7 +12,7 @@ class ReinforcementAgent:
     Q_arms = []
     q0 = 0
 
-    def __init(self, q_0=0):
+    def __init__(self, q_0=0):
         self.q0 = q_0
 
     def get_expectations(self):
