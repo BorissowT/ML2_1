@@ -45,6 +45,11 @@ class ReinforcementAgent:
                 max_arm = self.Q_arms.index(max_value)
                 self.updateQN(max_arm)
 
+    def updateQN_with_alpha(self, arm: int, alpha: float):
+        reward = self.bandit.play_arm(arm)
+        self.Q_arms[arm] += alpha * (reward - self.Q_arms[arm])
+        self.step_rewards.append(reward)
+
     def _update_N(self, arm: int):
         self.N_arms[arm] += 1
 
