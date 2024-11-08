@@ -9,7 +9,7 @@ if __name__ == "__main__":
     N_episodes = 500
     eps = 0.5
     q_0 = 5
-    alpha_values = [0.1, 0.05, 0.01]  # Different alpha values to test
+    alpha_values = [0.1, 0.05, 0.01]
 
     plt.figure(figsize=(12, 8))
 
@@ -22,11 +22,10 @@ if __name__ == "__main__":
             agent.set_bandit(bandit_function)
 
             for step in range(N_steps):
-                # Epsilon-greedy action selection
                 if np.random.rand() < eps:
-                    arm = np.random.randint(k_arms)  # Random arm
+                    arm = np.random.randint(k_arms)
                 else:
-                    arm = np.argmax(agent.Q_arms)  # Greedy choice
+                    arm = np.argmax(agent.Q_arms)
 
                 agent.updateQN_with_alpha(arm, alpha)
 
@@ -39,6 +38,7 @@ if __name__ == "__main__":
 
     plt.xlabel("Steps")
     plt.ylabel("Average Reward")
-    plt.title(f"Average Reward per Step with Constant Step Size over {N_episodes} Episodes")
+    plt.title(f"Average Reward per Step with Constant Step Size over"
+              f" {N_episodes} Episodes")
     plt.legend()
     plt.show()
