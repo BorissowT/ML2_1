@@ -10,6 +10,7 @@ if __name__ == "__main__":
     eps = 0.5
     q_0 = 5
     alpha_values = [0.1, 0.05, 0.01]
+    alpha_small = [0.0000000001]
 
     plt.figure(figsize=(12, 8))
 

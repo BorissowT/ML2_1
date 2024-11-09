@@ -10,7 +10,7 @@ if __name__ == "__main__":
     rewards_per_step = np.zeros(N_steps)
 
     eps = 0.5
-    q_0 = 5
+    q_0 = 15
 
     for episode in range(N_episodes):
         bandit_function = BanditFactory.get_normal_bandit_function(k_arms)
